@@ -53,6 +53,56 @@
   padding: 8px 0;
 }
 
+/* Fondo editorial claro con contraste natural para marcos blancos */
+.h-claro,
+.mm-intro,
+.mm-carrusel-section,
+.mm-memoria,
+.territorio-intro,
+.mirada-territorio {
+  background-color: #F2EFE9 !important;
+}
+
+/* Marcos fotográficos compartidos */
+.mm-card,
+.visor-slide {
+  border: 1px solid rgba(19, 58, 62, 0.18);
+  background: #FFFFFF;
+  box-shadow: 0 10px 26px rgba(11, 40, 43, 0.09);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+.mm-card img,
+.visor-visual img {
+  outline: 1px solid rgba(26, 107, 114, 0.14);
+  outline-offset: -1px;
+}
+.mm-card:hover,
+.visor-slide:hover {
+  border-color: rgba(26, 107, 114, 0.45);
+  box-shadow: 0 14px 34px rgba(11, 40, 43, 0.14);
+}
+.visor-slide:hover { transform: translateY(-3px); }
+
+/* Onda compacta dentro del Hero principal */
+.ola-home {
+  height: 55px;
+  margin: 1.25rem 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-right: 0;
+  overflow: hidden;
+  background: transparent;
+}
+.ola-home svg {
+  height: 55px;
+  width: 200%;
+  max-width: none;
+  left: 0;
+  animation: flow 18s linear infinite !important;
+}
+.ola-home .b { animation-duration: 28s; }
+
 /* 5. Imágenes: evitan saltos de diseño mientras cargan */
 img { height: auto; }
 
@@ -71,7 +121,108 @@ img { height: auto; }
   text-wrap: pretty;
 }
 
+/* 8. Accesos territoriales de la portada principal */
+.territorios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 28px auto 0;
+  text-align: left;
+}
+.territorio-card {
+  padding: 26px;
+  background: rgba(23, 97, 122, .28);
+  border: 1px solid rgba(105, 184, 206, .38);
+  border-radius: 12px;
+}
+.territorio-card h3 { margin-bottom: 8px; }
+.territorio-card p { min-height: 3.2em; }
+.territorio-card .eyebrow { margin-bottom: 8px; }
+
+@media (max-width: 700px) {
+  .territorios-grid { grid-template-columns: 1fr; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .revela { opacity: 1; transform: none; transition: none; }
   .arriba { transition: none; }
+}
+
+header nav ul,
+header nav li,
+header nav .menu {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+header .menu a,
+header .sub a {
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+}
+
+header .menu > li > a {
+  background: #17617a;
+  color: #e8e4d9;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+header .menu > li > a:hover,
+header .menu > li > a:focus-visible {
+  background: #e8e4d9;
+  color: #09272b;
+}
+
+header .sub {
+  width: fit-content !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #17617a !important;
+  border: none;
+  border-radius: 14px;
+  padding: 0.35rem;
+  box-shadow: none;
+}
+
+header .sub a {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+  white-space: nowrap;
+}
+
+.nav-icon-gota {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) invert(0.93);
+  transition: filter 0.2s ease;
+}
+
+header .sub a:hover .nav-icon-gota {
+  filter: none;
+}
+
+header .sub a {
+  background: transparent;
+  color: #e8e4d9;
+  border-radius: 10px;
+  padding: 0.45rem 0.9rem;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+header .sub a:hover,
+header .sub a:focus-visible {
+  background: #e8e4d9;
+  color: #09272b;
 }

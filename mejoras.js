@@ -15,6 +15,38 @@
   window.addEventListener('scroll', alScroll, { passive: true });
   alScroll();
 
+  // Menú desplegable accesible por clic y teclado
+  document.querySelectorAll('.menu > li').forEach((item) => {
+    const trigger = item.querySelector(':scope > a[aria-haspopup="true"]');
+    if (!trigger) return;
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      const abrir = !item.classList.contains('abierto');
+      document.querySelectorAll('.menu > li.abierto').forEach((other) => {
+        other.classList.remove('abierto');
+        other.querySelector(':scope > a[aria-haspopup="true"]')?.setAttribute('aria-expanded', 'false');
+      });
+      item.classList.toggle('abierto', abrir);
+      trigger.setAttribute('aria-expanded', String(abrir));
+    });
+  });
+  document.addEventListener('click', (event) => {
+    if (event.target.closest('.menu')) return;
+    document.querySelectorAll('.menu > li.abierto').forEach((item) => {
+      item.classList.remove('abierto');
+      item.querySelector(':scope > a[aria-haspopup="true"]')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    document.querySelectorAll('.menu > li.abierto').forEach((item) => {
+      item.classList.remove('abierto');
+      item.querySelector(':scope > a[aria-haspopup="true"]')?.setAttribute('aria-expanded', 'false');
+      item.querySelector(':scope > a[aria-haspopup="true"]')?.focus();
+    });
+  });
+
   // Aparición suave: solo si el navegador lo soporta y el usuario no pidió menos movimiento
   if (!('IntersectionObserver' in window) ||
       matchMedia('(prefers-reduced-motion: reduce)').matches) return;

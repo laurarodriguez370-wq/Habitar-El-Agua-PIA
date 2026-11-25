@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Cangreja · Las Palmas | Habitar el agua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style-principal.css">
+<link rel="stylesheet" href="mejoras.css?v=8">
+<style>
+  .cangreja-page .hero { position:relative; isolation:isolate; margin-top:-72px; padding:calc(clamp(70px,10vw,120px) + 72px) var(--lados) clamp(50px,7vw,80px); background:linear-gradient(180deg,#0b3139 0%,var(--oscuro) 100%); overflow:hidden; }
+  .cangreja-page .hero > * { position:relative; z-index:1; }
+  .cangreja-page .hero .eyebrow { margin-bottom: 18px; }
+  .cangreja-page .hero h1 { font-size: clamp(2.8rem,8vw,5.4rem); line-height: 1.05; }
+  .cangreja-page .hero .lead { max-width: 620px; margin-top: 22px; font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.7; }
+  .territorio-intro { max-width: 1100px; margin: 0 auto; padding: 90px var(--lados); display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 70px; align-items: center; }
+  .territorio-intro h2 { color: var(--crema); }
+  .territorio-intro h2 em { color: var(--celeste); }
+  .territorio-intro p { color: var(--suave); }
+  .territorio-intro { width: 100%; max-width: none; background: #F2EFE9; }
+  .territorio-intro > div { max-width: 520px; }
+  .territorio-intro h2 { color: #0B282B; }
+  .territorio-intro h2 em { color: #1A6B72; }
+  .territorio-intro p { color: #1F2E30; font-size: clamp(1rem,1.05rem,1.0625rem); line-height: 1.65; }
+  .territorio-intro .eyebrow { color: #1A6B72; }
+
+  .mirada-territorio { width: 100%; padding: 20px var(--lados) 90px; background: #F2EFE9; }
+  .visor-museografico { max-width: 1100px; margin: 0 auto; }
+  .visor-titulo { margin-bottom: 22px; }
+  .visor-titulo h2 { color: #0B282B; }
+  .visor-titulo p { color: #3B4A4C; font-size: 1.1rem; line-height: 1.65; text-align: center; margin-inline: auto; }
+  .visor-slide { display: grid; grid-template-columns: 60% 40%; min-height: 520px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(19,58,62,.18); border-radius: 16px; box-shadow: 0 10px 26px rgba(11,40,43,.09); }
+  .visor-visual { position: relative; min-height: 520px; overflow: hidden; background: #DDE8E7; }
+  .visor-visual img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; outline: 1px solid rgba(26,107,114,.14); outline-offset: -1px; transition: transform .55s ease, opacity .25s ease; }
+  .visor-visual:hover img { transform: scale(1.025); }
+  .visor-lupa { position: absolute; right: 18px; bottom: 18px; width: 46px; height: 46px; border: 1px solid rgba(250,248,245,.75); border-radius: 50%; background: rgba(11,40,43,.78); color: #FAF8F5; font-size: 18px; cursor: pointer; backdrop-filter: blur(8px); }
+  .visor-lupa:hover { background: #1A6B72; }
+  .visor-ficha { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 4vw, 54px); }
+  .visor-registro { color: #1A6B72; font-size: .8125rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .visor-ficha h3 { margin: 18px 0 16px; color: #0B282B; font-size: 1.15rem; font-weight: 700; }
+  .visor-ficha p { color: #1F2E30; font-size: 0.975rem; line-height: 1.65; max-width: 65ch; }
+  .visor-meta { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(11,40,43,.14); color: #1A6B72; font-size: .8125rem; }
+  .visor-controles { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
+  .visor-flecha { width: 46px; height: 46px; border: 1px solid #1A6B72; border-radius: 50%; background: transparent; color: #0B282B; font-size: 21px; cursor: pointer; transition: .25s ease; }
+  .visor-flecha:hover { background: #1A6B72; color: #FFFFFF; transform: translateY(-2px); }
+  .visor-puntos { display: flex; gap: 8px; }
+  .visor-punto { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 999px; background: #AFC6C4; cursor: pointer; transition: .25s ease; }
+  .visor-punto.activo { width: 30px; background: #1A6B72; }
+  .visor-slide.salida { opacity: 0; transform: translateX(12px); }
+  .visor-slide.entrada { opacity: 1; transform: translateX(0); transition: opacity .35s ease, transform .35s ease; }
+
+  .visor-lightbox { width: 100%; height: 100%; max-width: none; max-height: none; border: 0; padding: 24px; background: rgba(11,40,43,.72); backdrop-filter: blur(8px); }
+  .visor-lightbox::backdrop { background: rgba(11,40,43,.72); backdrop-filter: blur(8px); }
+  .visor-lightbox img { max-width: calc(100vw - 48px); max-height: calc(100vh - 48px); margin: auto; object-fit: contain; }
+  .visor-lightbox button { position: fixed; right: 24px; top: 24px; width: 44px; height: 44px; border: 1px solid rgba(250,248,245,.65); border-radius: 50%; background: #0B282B; color: #FAF8F5; font-size: 22px; cursor: pointer; }
+
+  @media (max-width: 700px) {
+    .territorio-intro { grid-template-columns: 1fr; gap: 30px; padding: 55px 7%; }
+    .mirada-territorio { padding: 20px 5% 55px; }
+    .visor-slide { grid-template-columns: 1fr; min-height: 0; }
+    .visor-visual { min-height: 280px; }
+    .visor-visual img { aspect-ratio: 4 / 3; }
+    .visor-ficha { min-height: 340px; padding: 28px 24px; }
+  }
+</style>
+</head>
+<body class="cangreja-page">
+<header class="cab">
+<nav>
+<a href="index.html" aria-label="Inicio"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></a>
+<ul class="menu">
+<li><a href="index.html">Inicio</a></li>
+<li><a href="index.html#moravia" aria-haspopup="true">Moravia ▾</a>
+<ul class="sub">
+  <li><a href="Bh.html"><img src="img/icono-agua.png" alt="" class="nav-icon-gota">Identidad</a></li>
+  <li><a href="memoria.html"><i class="ic" style="--i:var(--i-mem)"></i>Memoria</a></li>
+</ul>
+</li>
+<li><a href="cangreja.html" aria-current="page">La Cangreja</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+  <span class="eyebrow">Quebrada La Cangreja · Las Palmas</span>
+  <h1>La Cangreja <em>y el habitar</em></h1>
+  <p class="lead">Una línea territorial del proyecto Habitar el agua sobre la relación entre vivienda, cotidianidad y fuentes hídricas en Medellín.</p>
+</section>
+
+<div class="ola" aria-hidden="true">
+<svg class="a" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#69b8ce" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
+<svg class="b" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#17617a" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
+</div>
+
+<section class="territorio-intro">
+  <div>
+    <span class="eyebrow">01 · Territorio</span>
+    <h2>La quebrada como <em>referencia del lugar</em></h2>
+  </div>
+  <div>
+    <p>La quebrada La Cangreja forma parte del recorrido por las comunidades que habitan cerca de las fuentes hídricas de Medellín. Desde esta línea territorial, el proyecto pone atención en las formas de llegada, vivienda y vida cotidiana que se construyen alrededor del agua.</p>
+    <p>Las Palmas ofrece un punto de observación para comprender cómo el paisaje hídrico participa en la experiencia cotidiana de quienes reconocen y habitan el sector.</p>
+  </div>
+</section>
+
+<section class="mirada-territorio" aria-label="La mirada en el territorio">
+  <div class="visor-museografico">
+    <div class="visor-titulo">
+      <span class="eyebrow">Archivo fotográfico</span>
+      <h2>La mirada en <em>el territorio</em></h2>
+    </div>
+    <article class="visor-slide" id="visor-slide">
+      <div class="visor-visual">
+        <img id="visor-imagen" src="img_la/can_1.jpg" alt="Registro fotográfico de La Cangreja">
+        <button class="visor-lupa" type="button" id="visor-lupa" aria-label="Abrir imagen en pantalla completa">&#128269;</button>
+      </div>
+      <div class="visor-ficha">
+        <span class="visor-registro" id="visor-registro">LA MIRADA EN EL TERRITORIO · REGISTRO 01 / 08</span>
+        <h3 id="visor-titulo">Senderos cotidianos</h3>
+        <p id="visor-texto">El territorio se reconoce desde los recorridos que conectan la vivienda, el paisaje y las prácticas de uso cotidiano del agua.</p>
+        <div class="visor-meta">&#9673; <span id="visor-meta">Quebrada La Cangreja · Sector Las Palmas, Medellín</span></div>
+      </div>
+    </article>
+    <div class="visor-controles">
+      <button class="visor-flecha" id="visor-anterior" type="button" aria-label="Registro anterior">&#8592;</button>
+      <div class="visor-puntos" id="visor-puntos" aria-label="Seleccionar registro"></div>
+      <button class="visor-flecha" id="visor-siguiente" type="button" aria-label="Registro siguiente">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<dialog class="visor-lightbox" id="visor-lightbox" aria-label="Imagen ampliada">
+  <button type="button" id="visor-cerrar" aria-label="Cerrar">&times;</button>
+  <img id="visor-lightbox-img" src="" alt="">
+</dialog>
+</main>
+
+<footer>
+<div class="voz"><span class="eyebrow">Con la voz de la comunidad</span><blockquote>“La quebradita hace parte de nosotros mismos, pero que le hagan buen cuidado.”</blockquote><p>Don Pedro Carmona · Moravia</p></div>
+<div class="cols">
+<div><h3>Créditos</h3><ul class="creditos-lista"><li><strong>Laura Rodríguez</strong> — Arquitectura web, desarrollo front-end, diseño UI e integración</li><li><strong>Erica Zotelo</strong> — Co-desarrollo de Inicio, interacción del mapa e ilustración de íconos</li><li><strong>Tatiana Urrego y Sara Marín</strong> — Diseño visual (Sección Memoria)</li><li><strong>Juan Sebastián Bermúdez</strong> — Ilustración cartográfica (Mapa interactivo)</li><li><strong>Ana Gutiérrez</strong> — Investigación de contenido e ideación (La Cangreja)</li></ul></div>
+<div><h3>Universidad</h3><p>Institución Universitaria Pascual Bravo</p><p>Profesional en Diseño Gráfico</p></div>
+<div><h3>Comunidad</h3><p>Gracias a las personas y organizaciones que participaron y compartieron sus relatos y su territorio.</p></div>
+<div class="flogo"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></div>
+</div>
+<p class="legal">PIA · Habitar el agua · 2026. Los relatos se publican con el consentimiento de la comunidad.</p>
+</footer>
+<script src="mejoras.js?v=5" defer></script>
+<script>
+// Información editable de las ocho fotografías del visor museográfico.
+const registrosCangreja = [
+  { imagen: 'img_la/can_1.jpg', registro: '01', titulo: 'Senderos cotidianos', texto: 'El territorio se reconoce desde los recorridos que conectan la vivienda, el paisaje y las prácticas de uso cotidiano del agua.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_2.jpg', registro: '02', titulo: 'El paisaje cercano', texto: 'La quebrada acompaña el entorno inmediato y ofrece nuevas formas de observar la relación entre el agua y los bordes habitados.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_3.jpg', registro: '03', titulo: 'Huellas del recorrido', texto: 'Cada trayecto revela usos, encuentros y escalas de convivencia que hacen visible la vida alrededor del cauce.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_4.jpg', registro: '04', titulo: 'Memorias del borde', texto: 'El paisaje conserva indicios de cambios territoriales y de las formas en que las comunidades interpretan el entorno.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_5.jpg', registro: '05', titulo: 'Agua y cotidianidad', texto: 'Las actividades diarias permiten leer la fuente hídrica no solo como paisaje, sino como parte de la experiencia del habitar.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_6.jpg', registro: '06', titulo: 'Encuentros territoriales', texto: 'Los puntos de encuentro muestran cómo el territorio reúne viviendas, caminos y miradas sobre el río de cada sector.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_7.jpg', registro: '07', titulo: 'Vínculos con el paisaje', texto: 'Observar el cauce permite reconocer los vínculos afectivos y las relaciones prácticas que sostienen el lugar.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_8.jpg', registro: '08', titulo: 'Miradas compartidas', texto: 'La fotografía de campo abre una conversación sobre el cuidado, la memoria y las posibilidades de habitar junto al agua.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' }
+];
+
+let registroActual = 0;
+const visorSlide = document.getElementById('visor-slide');
+const visorImagen = document.getElementById('visor-imagen');
+const visorRegistro = document.getElementById('visor-registro');
+const visorTitulo = document.getElementById('visor-titulo');
+const visorTexto = document.getElementById('visor-texto');
+const visorMeta = document.getElementById('visor-meta');
+const puntos = document.getElementById('visor-puntos');
+
+registrosCangreja.forEach((registro, indice) => {
+  const punto = document.createElement('button');
+  punto.type = 'button';
+  punto.className = 'visor-punto';
+  punto.setAttribute('aria-label', `Ir al registro ${registro.registro}`);
+  punto.addEventListener('click', () => mostrarRegistro(indice));
+  puntos.appendChild(punto);
+});
+
+function mostrarRegistro(indice) {
+  registroActual = (indice + registrosCangreja.length) % registrosCangreja.length;
+  const registro = registrosCangreja[registroActual];
+  visorSlide.classList.remove('entrada');
+  visorSlide.classList.add('salida');
+
+  window.setTimeout(() => {
+    visorImagen.src = registro.imagen;
+    visorImagen.alt = `${registro.titulo} · ${registro.ubicacion}`;
+    visorRegistro.textContent = `LA MIRADA EN EL TERRITORIO · REGISTRO ${registro.registro} / 08`;
+    visorTitulo.textContent = registro.titulo;
+    visorTexto.textContent = registro.texto;
+    visorMeta.textContent = registro.ubicacion;
+    document.querySelectorAll('.visor-punto').forEach((punto, i) => punto.classList.toggle('activo', i === registroActual));
+    visorSlide.classList.remove('salida');
+    visorSlide.classList.add('entrada');
+  }, 180);
+}
+
+document.getElementById('visor-anterior').addEventListener('click', () => mostrarRegistro(registroActual - 1));
+document.getElementById('visor-siguiente').addEventListener('click', () => mostrarRegistro(registroActual + 1));
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft') mostrarRegistro(registroActual - 1);
+  if (event.key === 'ArrowRight') mostrarRegistro(registroActual + 1);
+});
+
+let toqueInicial = 0;
+visorSlide.addEventListener('touchstart', (event) => { toqueInicial = event.changedTouches[0].clientX; }, { passive: true });
+visorSlide.addEventListener('touchend', (event) => {
+  const desplazamiento = event.changedTouches[0].clientX - toqueInicial;
+  if (Math.abs(desplazamiento) > 48) mostrarRegistro(registroActual + (desplazamiento < 0 ? 1 : -1));
+}, { passive: true });
+
+const lightbox = document.getElementById('visor-lightbox');
+const lightboxImagen = document.getElementById('visor-lightbox-img');
+document.getElementById('visor-lupa').addEventListener('click', () => {
+  lightboxImagen.src = registrosCangreja[registroActual].imagen;
+  lightboxImagen.alt = visorImagen.alt;
+  lightbox.showModal();
+});
+document.getElementById('visor-cerrar').addEventListener('click', () => lightbox.close());
+lightbox.addEventListener('click', (event) => { if (event.target === lightbox) lightbox.close(); });
+
+mostrarRegistro(0);
+</script>
+</body>
+</html>

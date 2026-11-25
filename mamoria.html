@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moravia · Memoria | Habitar el agua</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f2f8fa;
+  color: #103b4a;
+  overflow-x: hidden;
+}
+
+:root {
+  --azul: #103b4a;
+  --azul-oscuro: #17627a;
+  --turquesa: #65b8ca;
+  --celeste: #cce8ee;
+  --fondo: #f2f8fa;
+  --beige: #f4e8ce;
+}
+
+/* NAVEGACIÓN */
+
+.mm-nav {
+  width: 100%;
+  padding: 22px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.mm-logo {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--azul);
+  text-decoration: none;
+}
+
+.mm-menu {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  list-style: none;
+}
+
+.mm-menu a {
+  color: var(--azul);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* PORTADA */
+
+.mm-portada {
+  min-height: 310px;
+  text-align: center;
+  padding: 45px 20px 20px;
+}
+
+.mm-etiqueta {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #52869a;
+}
+
+.mm-portada h1 {
+  font-size: clamp(48px, 8vw, 105px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -5px;
+  color: var(--azul);
+  margin-top: 20px;
+}
+
+.mm-portada h1 span {
+  font-weight: 400;
+  font-style: italic;
+  color: #28738b;
+}
+
+.mm-portada p {
+  max-width: 750px;
+  margin: 25px auto;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #527486;
+}
+
+/* ONDAS */
+
+.mm-onda {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.mm-onda svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* INTRODUCCIÓN */
+
+.mm-intro {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 50px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.mm-intro h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.15;
+  color: var(--azul);
+}
+
+.mm-intro h2 span {
+  color: #398ba0;
+}
+
+.mm-intro p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #547586;
+}
+
+/* CARRUSEL */
+
+.mm-carrusel-section {
+  padding: 65px 0 75px;
+  text-align: center;
+  background: #edf6f8;
+  overflow: hidden;
+}
+
+.mm-carrusel-section h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  color: var(--azul);
+  margin-top: 12px;
+}
+
+.mm-descripcion {
+  color: #648596;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.mm-carrusel {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  margin: 20px auto 0;
+  perspective: 1200px;
+}
+
+.mm-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.mm-card {
+  position: absolute;
+  width: 40%;
+  max-width: 570px;
+  height: 350px;
+  left: 50%;
+  top: 25px;
+  transform: translateX(-50%);
+  border: 6px solid white;
+  border-radius: 22px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 18px 40px rgba(16,59,74,.16);
+  transition:
+    transform .8s ease,
+    opacity .8s ease,
+    filter .8s ease;
+  cursor: pointer;
+}
+
+.mm-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mm-card.active {
+  transform: translateX(-50%) translateZ(100px);
+  opacity: 1;
+  z-index: 5;
+}
+
+.mm-card.left {
+  transform: translateX(-125%) rotateY(18deg) scale(.83);
+  opacity: .85;
+  z-index: 3;
+}
+
+.mm-card.right {
+  transform: translateX(25%) rotateY(-18deg) scale(.83);
+  opacity: .85;
+  z-index: 3;
+}
+
+.mm-card.far-left {
+  transform: translateX(-190%) rotateY(25deg) scale(.65);
+  opacity: .45;
+  z-index: 1;
+}
+
+.mm-card.far-right {
+  transform: translateX(90%) rotateY(-25deg) scale(.65);
+  opacity: .45;
+  z-index: 1;
+}
+
+.mm-card.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) scale(.5);
+  z-index: 0;
+}
+
+/* TEXTO DEL CARRUSEL */
+
+.mm-info {
+  margin-top: -5px;
+  min-height: 75px;
+  padding: 0 15px;
+}
+
+.mm-info h3 {
+  font-size: 19px;
+  color: var(--azul);
+  margin-bottom: 7px;
+}
+
+.mm-info p {
+  font-size: 12px;
+  color: #638495;
+}
+
+/* CONTROLES */
+
+.mm-controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 15px;
+}
+
+.mm-flecha {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #a9ced8;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--azul);
+  font-size: 22px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.mm-flecha:hover {
+  background: var(--azul);
+  color: white;
+}
+
+.mm-puntos {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.mm-punto {
+  width: 10px;
+  height: 10px;
+  background: #c5dce3;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.mm-punto.active {
+  width: 28px;
+  background: #17627a;
+}
+
+/* MEMORIA */
+
+.mm-memoria {
+  padding: 90px 7%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.mm-memoria h2 {
+  font-size: clamp(35px, 5vw, 58px);
+  line-height: 1.1;
+}
+
+.mm-memoria h2 span {
+  color: #4997a9;
+}
+
+.mm-memoria p {
+  color: #58798a;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.mm-cita {
+  background: #d7edf1;
+  padding: 45px;
+  border-radius: 18px;
+  color: var(--azul);
+}
+
+.mm-cita blockquote {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.mm-cita span {
+  display: block;
+  margin-top: 25px;
+  font-size: 11px;
+  color: #527b8b;
+}
+
+/* ARCHIVO */
+
+.mm-archivo {
+  padding: 70px 7%;
+  background: #e1f0f3;
+}
+
+.mm-archivo h2 {
+  font-size: clamp(35px, 5vw, 55px);
+  margin: 12px 0;
+}
+
+.mm-archivo p {
+  max-width: 550px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #547586;
+}
+
+.mm-archivo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.mm-archivo-item {
+  background: #f7faf9;
+  padding: 30px;
+  border-radius: 12px;
+  min-height: 160px;
+}
+
+.mm-archivo-item span {
+  font-size: 11px;
+  color: #398ba0;
+}
+
+.mm-archivo-item h3 {
+  margin-top: 35px;
+  font-size: 20px;
+}
+
+.mm-archivo-item a {
+  color: var(--azul);
+  text-decoration: none;
+}
+
+/* PIE DE PÁGINA */
+
+.mm-footer {
+  padding: 35px 7%;
+  background: var(--azul);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 11px;
+}
+
+.mm-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* CELULAR */
+
+@media(max-width: 700px) {
+
+  .mm-menu {
+    gap: 12px;
+  }
+
+  .mm-menu a {
+    font-size: 10px;
+  }
+
+  .mm-portada h1 {
+    letter-spacing: -2px;
+  }
+
+  .mm-intro,
+  .mm-memoria {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 45px 7%;
+  }
+
+  .mm-carrusel {
+    height: 310px;
+  }
+
+  .mm-card {
+    width: 65%;
+    height: 240px;
+    top: 20px;
+  }
+
+  .mm-card.left {
+    transform: translateX(-110%) scale(.75);
+  }
+
+  .mm-card.right {
+    transform: translateX(10%) scale(.75);
+  }
+
+  .mm-card.far-left,
+  .mm-card.far-right {
+    opacity: 0;
+  }
+
+  .mm-archivo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mm-cita {
+    padding: 30px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVEGACIÓN -->
+
+<header class="mm-nav">
+  <a href="index.html" class="mm-logo">HABITAR EL AGUA</a>
+  <nav aria-label="Navegación principal">
+    <ul class="mm-menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Bh.html">La Bermejala</a></li>
+      <li><a href="mamoria.html" aria-current="page">Memoria</a></li>
+      <li><a href="index.html#la-cangreja">La Cangreja</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- PORTADA -->
+
+<section class="mm-portada">
+
+  <span class="mm-etiqueta">Moravia · Memoria y territorio</span>
+
+  <h1>
+    Moravia <span>memoria</span>
+  </h1>
+
+  <p>
+    Un recorrido por las historias, experiencias y recuerdos
+    que construyen la identidad de quienes habitan Moravia.
+  </p>
+
+</section>
+
+<!-- ONDA -->
+
+<div class="mm-onda">
+<svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+  <path d="M0 35 Q180 5 360 35 T720 35 T1080 35 T1440 35"
+  fill="none" stroke="#65b8ca" stroke-width="3"/>
+  <path d="M0 48 Q180 18 360 48 T720 48 T1080 48 T1440 48"
+  fill="none" stroke="#28738b" stroke-width="3"/>
+</svg>
+</div>
+
+<!-- INTRODUCCIÓN -->
+
+<section class="mm-intro">
+
+  <div>
+    <span class="mm-etiqueta">01 · La memoria del lugar</span>
+
+    <h2>
+      LOS TERRITORIOS
+      TAMBIÉN SE
+      <span>CONSTRUYEN
+      CON RECUERDOS.</span>
+    </h2>
+  </div>
+
+  <div>
+    <p>
+      Moravia es un territorio de historias y experiencias.
+      Sus transformaciones hacen parte de la memoria
+      de quienes han construido su vida en este lugar.
+    </p>
+    <br>
+    <p>
+      A través de fotografías y relatos, este espacio
+      reúne diferentes miradas sobre el pasado, el presente
+      y las formas de habitar el territorio.
+    </p>
+  </div>
+
+</section>
+
+<!-- CARRUSEL FOTOGRÁFICO -->
+
+<section class="mm-carrusel-section">
+
+  <span class="mm-etiqueta">02 · Archivo visual</span>
+
+  <h2>MEMORIAS DE MORAVIA</h2>
+
+  <p class="mm-descripcion">
+    Un recorrido visual por el territorio y sus habitantes.
+  </p>
+
+  <div class="mm-carrusel">
+
+    <div class="mm-track" id="mm-track">
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 1.jpg" alt="Memoria de Moravia">
+      </article>
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 2.jpg" alt="Paisaje de Moravia">
+      </article>
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 3.jpg" alt="Vida cotidiana en Moravia">
+      </article>
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 4.jpeg" alt="Historias del territorio">
+      </article>
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 5.jpeg" alt="Memoria comunitaria">
+      </article>
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 6.jpg" alt="Transformaciones de Moravia">
+      </article>
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 8.png" alt="Identidad de Moravia">
+      </article>
+
+      <article class="mm-card">
+        <img src="img_ber/Foto 9.jpg" alt="Identidad de Moravia">
+      </article>
+
+    </div>
+
+  </div>
+
+  <div class="mm-info">
+    <h3 id="mm-titulo">Memoria del territorio</h3>
+    <p id="mm-texto">Moravia · Archivo fotográfico</p>
+  </div>
+
+  <div class="mm-controles">
+
+    <button class="mm-flecha" id="mm-prev" aria-label="Anterior">‹</button>
+
+    <div class="mm-puntos" id="mm-puntos"></div>
+
+    <button class="mm-flecha" id="mm-next" aria-label="Siguiente">›</button>
+
+  </div>
+
+</section>
+
+<!-- MEMORIA Y RELATOS -->
+
+<section class="mm-memoria">
+
+  <div>
+    <span class="mm-etiqueta">03 · Voces y experiencias</span>
+
+    <h2>
+      CADA RECUERDO
+      <span>CUENTA UNA
+      HISTORIA.</span>
+    </h2>
+
+    <br>
+
+    <p>
+      La memoria de Moravia también está presente
+      en las voces de sus habitantes. Sus experiencias
+      permiten comprender cómo ha cambiado el territorio
+      y qué significados conserva para la comunidad.
+    </p>
+  </div>
+
+  <div class="mm-cita">
+
+    <blockquote>
+      “Recuerdo que para cruzar la quebrada teníamos que utilizar pasos muy artesanales. A veces pasábamos por una tabla, un puente de madera o un tubo redondo. También recuerdo que, durante las épocas de violencia del barrio, la quebrada se convirtió en una especie de barrera invisible. Las personas que vivían a un lado no podían cruzar al otro porque podían perder la vida..”
+    </blockquote>
+
+    <span>TESTIMONIO · COMUNIDAD DE MORAVIA</span>
+
+  </div>
+
+</section>
+
+
+
+
+
+<!-- PIE DE PÁGINA -->
+
+<footer class="mm-footer">
+  <span>PIA · HABITAR EL AGUA · 2026</span>
+  <span>Institución Universitaria Pascual Bravo</span>
+  <a href="index.html">Volver al inicio ↑</a>
+</footer>
+
+<!-- FUNCIONAMIENTO DEL CARRUSEL -->
+
+<script>
+
+const cards = document.querySelectorAll('.mm-card');
+
+const titulos = [
+  'Memoria del territorio',
+  'Paisajes de Moravia',
+  'Vida cotidiana',
+  'Historias del territorio',
+  'Memoria comunitaria',
+  'Transformaciones del lugar',
+  'Identidad territorial',
+  'Memorias compartidas'
+];
+
+const descripciones = [
+  'Moravia · Archivo fotográfico',
+  'Moravia · Paisajes y recorridos',
+  'Moravia · Cotidianidad',
+  'Moravia · Historias de sus habitantes',
+  'Moravia · Memoria colectiva',
+  'Moravia · Transformaciones',
+  'Moravia · Identidad',
+  'Moravia · Archivo comunitario'
+];
+
+const puntosContenedor = document.getElementById('mm-puntos');
+const titulo = document.getElementById('mm-titulo');
+const texto = document.getElementById('mm-texto');
+
+let actual = 0;
+let temporizador;
+
+cards.forEach((card, i) => {
+  const punto = document.createElement('button');
+  punto.className = 'mm-punto';
+  punto.setAttribute('aria-label', 'Ir a fotografía ' + (i + 1));
+
+  punto.addEventListener('click', () => {
+    actual = i;
+    actualizar();
+    reiniciar();
+  });
+
+  puntosContenedor.appendChild(punto);
+
+  card.addEventListener('click', () => {
+    if (i !== actual) {
+      actual = i;
+      actualizar();
+      reiniciar();
+    }
+  });
+});
+
+const puntos = document.querySelectorAll('.mm-punto');
+
+function actualizar() {
+
+  cards.forEach((card, i) => {
+
+    card.className = 'mm-card';
+
+    let diferencia = (i - actual + cards.length) % cards.length;
+
+    if (diferencia === 0) {
+      card.classList.add('active');
+    }
+    else if (diferencia === 1) {
+      card.classList.add('right');
+    }
+    else if (diferencia === 2) {
+      card.classList.add('far-right');
+    }
+    else if (diferencia === cards.length - 1) {
+      card.classList.add('left');
+    }
+    else if (diferencia === cards.length - 2) {
+      card.classList.add('far-left');
+    }
+    else {
+      card.classList.add('hidden');
+    }
+
+  });
+
+  puntos.forEach((punto, i) => {
+    punto.classList.toggle('active', i === actual);
+  });
+
+  titulo.textContent = titulos[actual];
+  texto.textContent = descripciones[actual];
+
+}
+
+function siguiente() {
+  actual = (actual + 1) % cards.length;
+  actualizar();
+}
+
+function anterior() {
+  actual = (actual - 1 + cards.length) % cards.length;
+  actualizar();
+}
+
+document.getElementById('mm-next').addEventListener('click', () => {
+  siguiente();
+  reiniciar();
+});
+
+document.getElementById('mm-prev').addEventListener('click', () => {
+  anterior();
+  reiniciar();
+});
+
+function iniciar() {
+  temporizador = setInterval(siguiente, 3500);
+}
+
+function reiniciar() {
+  clearInterval(temporizador);
+  iniciar();
+}
+
+const carrusel = document.querySelector('.mm-carrusel-section');
+
+carrusel.addEventListener('mouseenter', () => {
+  clearInterval(temporizador);
+});
+
+carrusel.addEventListener('mouseleave', () => {
+  iniciar();
+});
+
+actualizar();
+iniciar();
+
+</script>
+
+</body>
+</html>

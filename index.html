@@ -16,22 +16,49 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style-principal.css">
 <style>
-  body, h1, h2, h3, p, a, span, blockquote {
-    font-family: 'DM Sans', sans-serif;
-  }
   h1 em, h2 em {
     font-style: italic;
   }
 
+  body > main > section.hero:first-of-type {
+    min-height: auto;
+    margin-top: -72px;
+    padding: calc(clamp(70px, 10vw, 120px) + 72px) var(--lados) 0;
+  }
+
+  body > main > section.hero:first-of-type .lead {
+    margin-top: 18px;
+  }
+
+  body > main > section.sec:has(.gal) {
+    padding-top: 40px;
+    padding-bottom: 3.25rem;
+  }
+
+  @media (max-width: 767px) {
+    body > main > section.hero:first-of-type {
+      padding: calc(58px + 72px) 7% 0;
+    }
+    body > main > section.sec:has(.gal) {
+      padding-top: 32px;
+      padding-bottom: 3.25rem;
+    }
+  }
+
   /* 1. PUNTO DE PARTIDA: FONDO CLARO Y DIAGRAMACIÓN EDITORIAL EN 2 COLUMNAS */
   #punto-de-partida {
+    width:100%;
+    max-width:100%;
+    margin-left:0;
+    margin-right:0;
+    border-radius:0;
     background-color: #F4F8F8;
     color: #132A2C;
-    padding: 85px 8%;
+    padding: 3rem 1.5rem;
     text-align: left;
   }
   #punto-de-partida .txt {
-    max-width: 1100px;
+    max-width: 760px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.15fr;
@@ -65,6 +92,14 @@
   #punto-de-partida p:first-of-type {
     grid-row: 1 / 3;
   }
+
+  /* Contraste de los pilares sobre el fondo oscuro */
+  #pilares h2 { color: #FFFFFF; }
+  #pilares h2 em { color: #67E8F9; }
+  #pilares .pguia { color: #E6ECEB; opacity: 1; }
+  #pilares p, #pilares .ctx, #pilares .pq { color: #E6ECEB; opacity: 1; }
+  #conoce-mas p { color: #E6ECEB; opacity: 1; }
+  #pilares .eyebrow { color: #7CE8E6; }
 
   /* 2. PILARES: 4 DIMENSIONES, CICLO DE 24s, CONTEXTO + PREGUNTA */
   @keyframes ciclo4 {
@@ -154,12 +189,13 @@
 <a href="index.html" aria-label="Inicio"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></a>
 <ul class="menu">
 <li><a href="index.html">Inicio</a></li>
-<li><a href="Bh.html" aria-haspopup="true">La Bermejala ▾</a>
+<li><a href="#moravia" aria-haspopup="true">Moravia ▾</a>
 <ul class="sub">
-  <li><a href="Bh.html"><i class="ic" style="--i:var(--i-identidad)"></i>Identidad</a></li>
- 
+  <li><a href="Bh.html"><img src="img/icono-agua.png" alt="" class="nav-icon-gota">Identidad</a></li>
+  <li><a href="memoria.html"><i class="ic" style="--i:var(--i-mem)"></i>Memoria</a></li>
 </ul>
 </li>
+<li><a href="cangreja.html">La Cangreja</a></li>
 </ul>
 </nav>
 </header>
@@ -169,6 +205,10 @@
 <span class="eyebrow">PIA · Programa de Diseño Gráfico</span>
 <h1>Habitar <em>el agua</em></h1>
 <p class="lead">Desplazamiento, territorio e identidad en comunidades asentadas alrededor de fuentes hídricas de Medellín y el Área Metropolitana.</p>
+<div class="ola ola-home" aria-hidden="true">
+<svg class="a" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#69b8ce" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
+<svg class="b" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#17617a" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
+</div>
 </section>
 
 <section class="sec">
@@ -180,15 +220,13 @@
     <div class="sl"><img src="img/bermejala-4.jpg" alt="Fotografía 4 de La Bermejala"></div>
     <div class="sl"><img src="img/bermejala-5.jpg" alt="Fotografía 5 de La Bermejala"></div>
     <div class="sl"><img src="img/bermejala-6.jpg" alt="Fotografía 6 de La Bermejala"></div>
+    <div class="sl"><img src="img_la/can_1.jpg" alt="Fotografía 1 de La Cangreja"></div>
+    <div class="sl"><img src="img_la/can_2.jpg" alt="Fotografía 2 de La Cangreja"></div>
+    <div class="sl"><img src="img_la/can_3.jpg" alt="Fotografía 3 de La Cangreja"></div>
   </div>
-  <p class="pie-foto">La Bermejala · Moravia. Fotografías del trabajo de campo.</p>
+  <p class="pie-foto">La Bermejala · La Cangreja · Fotografías del trabajo de campo.</p>
 </div>
 </section>
-
-<div class="ola" aria-hidden="true">
-<svg class="a" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#69b8ce" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
-<svg class="b" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#17617a" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
-</div>
 
 <section class="sec c" id="punto-de-partida">
 <div class="txt">
@@ -200,28 +238,15 @@
 </section>
 
 <section class="sec c" id="cartografia">
-<span class="eyebrow">Mapa interactivo</span>
-<h2>Cartografía <em>del territorio</em></h2>
-<p style="font-size:.8rem;letter-spacing:.12em;text-transform:uppercase">Pasa el puntero · haz clic en el icono</p>
-<div class="marco"><div class="mapa">
-<img loading="lazy" decoding="async" src="img/mapa.webp" alt="Mapa de Medellín con la quebrada La Bermejala">
-<span class="lab" style="--x:31%;--y:76%">La Bermejala</span>
-
-<div class="hot" style="--x:30.7%;--y:64.7%;--d:0s">
-  <button class="hs" type="button" aria-label="La Bermejala · Moravia"></button>
-  <div class="pop">
-    <img loading="lazy" decoding="async" src="img/bermejala-1.jpg" alt="">
-    <h3>La Bermejala</h3>
-    <small>Moravia · Medellín</small>
-    <p>Mapas, voces y memorias de cinco habitantes sobre la quebrada: una cartografía del sentipensar construida caminando el barrio.</p>
-    <a href="Bh.html">Ir a la sección →</a>
-  </div>
-</div>
-
-
-
-</div></div>
-<p class="nota-mapa">Este mapa ubica el territorio documentado en esta entrega: la quebrada La Bermejala, en Moravia. El proyecto está pensado para sumar otras comunidades asentadas junto a fuentes hídricas de Medellín y el Área Metropolitana.</p>
+  <span class="eyebrow">Mapa interactivo</span><h2>Cartografía</h2>
+  <p class="mapa-instructivo">Pasa el puntero · haz clic en un icono</p>
+  <div class="marco"><div class="mapa">
+    <img src="img/mapa.webp" alt="Mapa de Medellín con las quebradas La Bermejala y La Cangreja">
+    <span class="lab" style="--x:31%;--y:76%">La Bermejala</span><span class="lab" style="--x:84%;--y:83%">La Cangreja</span>
+    <div class="hot" style="--x:30.7%;--y:64.7%;--d:0s"><button class="hs hs-agua" type="button" aria-label="Identidad · La Bermejala"><img src="img/icono-agua.png" alt=""></button><div class="pop"><img src="img/bermejala-1.jpg" alt=""><h3>Identidad · La Bermejala</h3><small>Aranjuez</small><p>El agua en la vida diaria: sus usos, las prácticas comunitarias, los vínculos afectivos y la identidad alrededor de la quebrada.</p><a href="Bh.html">Ir a la sección →</a></div></div>
+    <div class="hot" style="--x:23.4%;--y:45.2%;--d:-1.3s"><button class="hs" type="button" aria-label="Memoria · La Bermejala"></button><div class="pop"><img src="img/bermejala-4.jpg" alt=""><h3>Memoria · La Bermejala</h3><small>Aranjuez</small><p>Relatos y memorias de quienes llegaron y han visto transformarse el territorio.</p><a href="memoria.html">Ir a la sección →</a></div></div>
+    <div class="hot" style="--x:80.6%;--y:56.1%;--d:-2.6s"><button class="hs" type="button" aria-label="La Cangreja"></button><div class="pop"><img src="img_la/can_1.jpg" alt=""><h3>La Cangreja</h3><small>Las Palmas</small><p>Conoce la línea territorial del trabajo en la quebrada La Cangreja.</p><a href="cangreja.html">Ir a la sección →</a></div></div>
+  </div></div>
 </section>
 
 <section class="sec" id="pilares">
@@ -239,6 +264,7 @@
     <h3>Habitar</h3>
     <p class="ctx">Cómo llegaron las comunidades al territorio, cómo lo ocuparon y lo transformaron: la vivienda, la vida cotidiana y la relación entre la casa y la quebrada.</p>
     <p class="pq"><span class="pq-lab">Pregunta por responder</span>¿Cómo las comunidades construyen sus formas de habitar los territorios próximos a las fuentes hídricas?</p>
+    <span class="tag-bermejala">Dimensión desarrollada en esta muestra · La Bermejala</span>
   </div>
 </article>
 
@@ -249,6 +275,7 @@
     <h3>Memoria y territorio</h3>
     <p class="ctx">Los relatos de llegada, los lugares importantes y los acontecimientos que los habitantes recuerdan, y la manera en que pasado y presente se cruzan en el lugar.</p>
     <p class="pq"><span class="pq-lab">Pregunta por responder</span>¿Qué memorias y relatos construyen los habitantes alrededor del territorio que habitan?</p>
+    <span class="tag-bermejala">Dimensión desarrollada en esta muestra · La Bermejala</span>
   </div>
 </article>
 
@@ -283,12 +310,12 @@
 </div>
 </section>
 
-<section class="sec c">
+<section class="sec c" id="conoce-mas">
 <div class="txt" style="max-width:700px">
   <span class="eyebrow">Conoce más</span>
   <h2>Una investigación <em>que se dibuja</em></h2>
   <p>Una investigación etnográfica que usa el diseño gráfico para interpretar, comunicar y poner en escena las experiencias de quienes habitan junto al agua.</p>
-  <a class="btn" href="Bh.html">Explorar La Bermejala ↗</a>
+  <a class="btn" href="multi/Contex_Habitar_PIA%20.pdf" target="_blank" rel="noopener noreferrer">Leer documento PIA (PDF) ↗</a>
 </div>
 </section>
 </main>
@@ -300,9 +327,9 @@
   <p>Don Pedro Carmona · Moravia</p>
 </div>
 <div class="cols">
-  <div><h3>Créditos</h3><p>Investigación y diseño: Laura Yazmín Rodríguez Pérez </p> <p>Ilustración: Juan Bermudez</p></div>
-  <div><h3>Universidad</h3><p>Institución Universitaria Pascual Bravo</p><p>Programa de Diseño Gráfico</p></div>
-  <div><h3>Comunidad</h3><p>Personas y organizaciones que compartieron sus relatos y su territorio.</p></div>
+  <div><h3>Créditos</h3><ul class="creditos-lista"><li><strong>Laura Rodríguez</strong> — Arquitectura web, desarrollo front-end, diseño UI e integración</li><li><strong>Erica Zotelo</strong> — Co-desarrollo de Inicio, interacción del mapa e ilustración de íconos</li><li><strong>Tatiana Urrego y Sara Marín</strong> — Diseño visual (Sección Memoria)</li><li><strong>Juan Sebastián Bermúdez</strong> — Ilustración cartográfica (Mapa interactivo)</li><li><strong>Ana Gutiérrez</strong> — Investigación de contenido e ideación (La Cangreja)</li></ul></div>
+  <div><h3>Universidad</h3><p>Institución Universitaria Pascual Bravo</p><p>Profesional en Diseño Gráfico</p></div>
+  <div><h3>Comunidad</h3><p>Gracias a las personas y organizaciones que participaron y compartieron sus relatos y su territorio.</p></div>
 <div class="flogo"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></div>
 </div>
 <p class="legal">PIA · Habitar el agua · 2026. Los relatos se publican con el consentimiento de la comunidad.</p>

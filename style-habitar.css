@@ -37,12 +37,12 @@ html {
 }
 
 .h-claro {
-  background: #ffffff;
+  background: #F2EFE9;
 }
 
 .h-hielo {
-  background: var(--agua-050);
-  border-top: 1px solid var(--borde-agua);
+  background: #EDEBE5;
+  border-top: 1px solid rgba(19, 58, 62, 0.14);
 }
 
 .h-bloque h2,
@@ -129,7 +129,7 @@ html {
 /* ============ CARRUSEL DE MEMORIA (.mm-sec) ============ */
 .mm-sec {
   padding: 4.5rem 1.25rem;
-  background: linear-gradient(180deg, var(--agua-050) 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #EDEBE5 0%, #F2EFE9 100%);
   text-align: center;
   overflow: hidden;
 }
@@ -148,6 +148,9 @@ html {
 }
 
 .mm-card {
+  border: 1px solid rgba(19, 58, 62, 0.18);
+  background: #FFFFFF;
+  box-shadow: 0 10px 26px rgba(11, 40, 43, 0.09);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -156,8 +159,8 @@ html {
   margin: 0;
   border-radius: 20px;
   overflow: hidden;
-  background: var(--agua-900);
-  box-shadow: 0 18px 38px rgba(14, 63, 80, 0.18);
+  background: #FFFFFF;
+  box-shadow: 0 10px 26px rgba(11, 40, 43, 0.09);
   cursor: pointer;
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.55s ease,
@@ -169,27 +172,39 @@ html {
   height: 100%;
   object-fit: cover;
   display: block;
+  outline: 1px solid rgba(26, 107, 114, 0.14);
+  outline-offset: -1px;
 }
 
 /* Posición, tamaño y escala de cada tarjeta: los calcula el script según la proporción de cada imagen */
 .mm-card.active { cursor: zoom-in; }
+.mm-card:hover { border-color: rgba(26, 107, 114, 0.45); box-shadow: 0 14px 34px rgba(11, 40, 43, 0.14); }
 .mm-card.fuera { pointer-events: none; }
 
 .mm-info {
+  max-width: 640px;
   min-height: 3.6rem;
-  margin-bottom: 1rem;
+  margin: 1.25rem auto 1rem;
+  padding: 0 15px;
+  text-align: center;
 }
 
 .mm-info h3 {
-  margin: 0;
-  font-size: 1.25rem;
-  color: var(--agua-700);
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0B282B;
+  text-align: center;
 }
 
 .mm-info p {
-  margin: 0.25rem 0 0;
-  font-size: 0.92rem;
-  color: var(--tinta-600);
+  max-width: 640px;
+  margin: 4px auto 0;
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: #243335;
+  text-align: center;
 }
 
 .mm-ctrl {
@@ -245,12 +260,12 @@ html {
 
 .h-sala {
   padding: 4.5rem 0;
-  background: #ffffff;
-  border-top: 1px solid var(--borde-agua);
+  background: #F2EFE9;
+  border-top: 1px solid rgba(19, 58, 62, 0.14);
 }
 
 .h-sala.alt {
-  background: var(--agua-050);
+  background: #EDEBE5;
 }
 
 .h-in {
@@ -277,8 +292,9 @@ html {
   display: block;
   width: 100%;
   padding: 0.65rem;
-  background: #ffffff;
-  border: 1px solid var(--borde-agua);
+  background: #FFFFFF;
+  border: 1px solid rgba(19, 58, 62, 0.18);
+  box-shadow: 0 10px 26px rgba(11, 40, 43, 0.09);
   border-radius: 18px;
   box-shadow: 0 14px 32px rgba(23, 97, 122, 0.09);
   cursor: zoom-in;
@@ -296,6 +312,8 @@ html {
   object-fit: cover;
   border-radius: 12px;
   display: block;
+  outline: 1px solid rgba(26, 107, 114, 0.14);
+  outline-offset: -1px;
 }
 
 .h-obra figcaption {
@@ -393,9 +411,10 @@ html {
 
 .h-hall article {
   padding: 1.5rem;
-  background: var(--agua-050);
-  border: 1px solid var(--borde-agua);
+  background: #F2EFE9;
+  border: 1px solid rgba(19, 58, 62, 0.18);
   border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(11, 40, 43, 0.07);
 }
 
 .h-hall h3 {

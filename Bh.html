@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="style-principal.css">
 <link rel="stylesheet" href="style-habitar.css">
 <style>
-  body, h1, h2, h3, p, a, span, blockquote, dt, dd, li, button { font-family: 'DM Sans', sans-serif; }
   html, body { overflow-x: clip; max-width: 100%; }
   .mm-sec { overflow-x: hidden; }
 </style>
@@ -30,11 +29,13 @@
 <a href="index.html" aria-label="Inicio"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></a>
 <ul class="menu">
 <li><a href="index.html">Inicio</a></li>
-<li><a href="Bh.html" aria-haspopup="true">La Bermejala ▾</a>
+<li><a href="index.html#moravia" aria-haspopup="true">Moravia ▾</a>
 <ul class="sub">
-  <li><a href="Bh.html"><i class="ic" style="--i:var(--i-identidad)"></i>Identidad</a></li>
+  <li><a href="Bh.html"><img src="img/icono-agua.png" alt="" class="nav-icon-gota">Identidad</a></li>
+  <li><a href="memoria.html"><i class="ic" style="--i:var(--i-mem)"></i>Memoria</a></li>
 </ul>
 </li>
+<li><a href="cangreja.html">La Cangreja</a></li>
 </ul>
 </nav>
 </header>
@@ -282,9 +283,9 @@ Tu navegador no puede reproducir este video.
 <footer>
 <div class="voz"><span class="eyebrow">Con la voz de la comunidad</span><blockquote>“La quebradita hace parte de nosotros mismos, pero que le hagan buen cuidado.”</blockquote><p>Don Pedro Carmona · Moravia</p></div>
 <div class="cols">
-<div><h3>Créditos</h3><p>Investigación y diseño: Laura Yazmín Rodríguez Pérez</p><p>Ilustración: Juan Bermudez</p></div>
-<div><h3>Universidad</h3><p>Institución Universitaria Pascual Bravo</p><p>Programa de Diseño Gráfico</p></div>
-<div><h3>Comunidad</h3><p>Personas y organizaciones que compartieron sus relatos y su territorio.</p></div>
+<div><h3>Créditos</h3><ul class="creditos-lista"><li><strong>Laura Rodríguez</strong> — Arquitectura web, desarrollo front-end, diseño UI e integración</li><li><strong>Erica Zotelo</strong> — Co-desarrollo de Inicio, interacción del mapa e ilustración de íconos</li><li><strong>Tatiana Urrego y Sara Marín</strong> — Diseño visual (Sección Memoria)</li><li><strong>Juan Sebastián Bermúdez</strong> — Ilustración cartográfica (Mapa interactivo)</li><li><strong>Ana Gutiérrez</strong> — Investigación de contenido e ideación (La Cangreja)</li></ul></div>
+<div><h3>Universidad</h3><p>Institución Universitaria Pascual Bravo</p><p>Profesional en Diseño Gráfico</p></div>
+<div><h3>Comunidad</h3><p>Gracias a las personas y organizaciones que participaron y compartieron sus relatos y su territorio.</p></div>
 <div class="flogo"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></div>
 </div>
 <p class="legal">PIA · Habitar el agua · 2026. Los relatos se publican con el consentimiento de la comunidad.</p>
@@ -373,7 +374,7 @@ const abrirVisor = (src, alt) => {
   function play() {
     clearInterval(id);
     if (!matchMedia('(prefers-reduced-motion:reduce)').matches)
-      id = setInterval(() => { a = (a + 1) % n; up(); }, 5000);
+      id = setInterval(() => { a = (a + 1) % n; up(); }, 4000);
   }
 
   c.forEach((el, i) => {
