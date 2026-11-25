@@ -119,8 +119,8 @@
       </div>
       <div class="visor-ficha">
         <span class="visor-registro" id="visor-registro">LA MIRADA EN EL TERRITORIO · REGISTRO 01 / 08</span>
-        <h3 id="visor-titulo">Senderos cotidianos</h3>
-        <p id="visor-texto">El territorio se reconoce desde los recorridos que conectan la vivienda, el paisaje y las prácticas de uso cotidiano del agua.</p>
+        <h3 id="visor-titulo">Registro 01 · Senderos cotidianos</h3>
+        <p id="visor-texto">Los caminos que rodean la quebrada conectan las viviendas con los espacios naturales y hacen parte de los recorridos diarios de sus habitantes.</p>
         <div class="visor-meta">&#9673; <span id="visor-meta">Quebrada La Cangreja · Sector Las Palmas, Medellín</span></div>
       </div>
     </article>
@@ -152,14 +152,14 @@
 <script>
 // Información editable de las ocho fotografías del visor museográfico.
 const registrosCangreja = [
-  { imagen: 'img_la/can_1.jpg', registro: '01', titulo: 'Senderos cotidianos', texto: 'El territorio se reconoce desde los recorridos que conectan la vivienda, el paisaje y las prácticas de uso cotidiano del agua.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
-  { imagen: 'img_la/can_2.jpg', registro: '02', titulo: 'El paisaje cercano', texto: 'La quebrada acompaña el entorno inmediato y ofrece nuevas formas de observar la relación entre el agua y los bordes habitados.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
-  { imagen: 'img_la/can_3.jpg', registro: '03', titulo: 'Huellas del recorrido', texto: 'Cada trayecto revela usos, encuentros y escalas de convivencia que hacen visible la vida alrededor del cauce.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
-  { imagen: 'img_la/can_4.jpg', registro: '04', titulo: 'Memorias del borde', texto: 'El paisaje conserva indicios de cambios territoriales y de las formas en que las comunidades interpretan el entorno.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
-  { imagen: 'img_la/can_5.jpg', registro: '05', titulo: 'Agua y cotidianidad', texto: 'Las actividades diarias permiten leer la fuente hídrica no solo como paisaje, sino como parte de la experiencia del habitar.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
-  { imagen: 'img_la/can_6.jpg', registro: '06', titulo: 'Encuentros territoriales', texto: 'Los puntos de encuentro muestran cómo el territorio reúne viviendas, caminos y miradas sobre el río de cada sector.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
-  { imagen: 'img_la/can_7.jpg', registro: '07', titulo: 'Vínculos con el paisaje', texto: 'Observar el cauce permite reconocer los vínculos afectivos y las relaciones prácticas que sostienen el lugar.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
-  { imagen: 'img_la/can_8.jpg', registro: '08', titulo: 'Miradas compartidas', texto: 'La fotografía de campo abre una conversación sobre el cuidado, la memoria y las posibilidades de habitar junto al agua.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' }
+  { imagen: 'img_la/can_1.jpg', registro: '01', titulo: 'Registro 01 · Senderos cotidianos', texto: 'Los caminos que rodean la quebrada conectan las viviendas con los espacios naturales y hacen parte de los recorridos diarios de sus habitantes.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_2.jpg', registro: '02', titulo: 'Registro 02 · El paisaje cercano', texto: 'La vegetación, los senderos y las pendientes configuran un paisaje donde el entorno natural convive con las construcciones del sector.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_3.jpg', registro: '03', titulo: 'Registro 03 · Huellas del recorrido', texto: 'Los caminos y las viviendas revelan distintas formas de ocupar el territorio, mostrando cómo las personas construyen sus recorridos alrededor de la quebrada.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_4.jpg', registro: '04', titulo: 'Registro 04 · Memorias del borde', texto: 'Las viviendas, los espacios de encuentro y las zonas de tránsito reflejan las transformaciones del paisaje y las maneras en que la comunidad se apropia de su entorno.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_5.jpg', registro: '05', titulo: 'Registro 05 · Agua y cotidianidad', texto: 'La presencia de árboles y vegetación permite reconocer un entorno donde los elementos naturales hacen parte del paisaje habitado y de la experiencia cotidiana.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_6.jpg', registro: '06', titulo: 'Registro 06 · Encuentros territoriales', texto: 'Los espacios abiertos entre las viviendas y la vegetación muestran cómo diferentes elementos del territorio conviven y configuran lugares de encuentro y circulación.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_7.jpg', registro: '07', titulo: 'Registro 07 · Vínculos con el paisaje', texto: 'Las escaleras y los pasajes entre las construcciones evidencian las formas de desplazamiento y adaptación de los habitantes a las características del terreno.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' },
+  { imagen: 'img_la/can_8.jpg', registro: '08', titulo: 'Registro 08 · Miradas compartidas', texto: 'La relación entre las viviendas, los árboles y los espacios verdes permite observar un territorio en constante transformación, donde naturaleza y comunidad comparten un mismo espacio.', ubicacion: 'Quebrada La Cangreja · Sector Las Palmas, Medellín' }
 ];
 
 let registroActual = 0;
